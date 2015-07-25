@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link type="text/CSS" rel="stylesheet" href="stylesheet.css" />
+        <script type="text/javascript" src="script.js"></script>
+        <link rel="icon" type="image/png" href="smiley.ico">
+        <title>Zack Littke-Smith</title>
+    </head>
+    <body id="body">
+        <div id="top">
+            <h1>PROJECTS</h1>
+        </div>
+        <div id="nav">
+            <table align="center">
+                <tr>
+                    <td class="rtd" style="width:5px">
+                        <h3>|</h3>
+                    </td>
+                    <td class="rtd">
+                        <h3><a href="index.html">Home</a></h3>
+                    </td>
+                    <td class="rtd" style="width:5px">
+                        <h3>|</h3>
+                    </td>
+                    <td class="rtd" onmouseenter="altNav()" onmouseleave="regNav()">
+                        <h3><span id="disappear">Projects</span></h3>
+                    </td>
+                    <td class="rtd" style="width:5px">
+                        <h3>|</h3>
+                    </td>
+                    <td class="rtd">
+                        <h3><a href="resume.html">Resume</a></h3>
+                    </td>
+                    <td class="rtd" style="width:5px">
+                        <h3>|</h3>
+                    </td>
+                    <td class="rtd">
+                        <h3><a onclick="changeColor()">Change Theme</a></h3>
+                    </td>
+                    <td class="rtd" style="width:5px">
+                        <h3>|</h3>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="pic">
+            <div id="crop">
+                <img id="image" src="blueMain.png" width="100%" height="899px">
+            </div>
+        </div>
+        <div id="main" style="background:#FFFFFF">
+            <h1>Poetry</h1>
+            <div class="post">
+                <span class="leftAlign">
+                    <p>English is a beautiful language, and so many things can be expressed using its complexities. Linguists have said that English is the most 'rhyme-rich' and complex language, making it perfect for creative writing (not that I know any other languages which I could write in). For me, writing poetry requires the exact right mood, time, and surroundings, otherwise it's very difficult. But when I feel the variables are right, I'll just dive in. It's hard to explain my process as it depends on what I'm writing and what sort of thing I'm trying to say. Anyways, I've put all the poetry I've written and that I feel are presentable into the document below, click <span onclick="cyclePoetry(3, 9)">HERE</span> to change the poem (they're ordered from my most favorite to my least favorite)</p>
+                </span>
+                <object data="poetryExample30.pdf" id="cycle3" type="application/pdf" width="100%" height="1075px"></object>
+            </div>
+        </div>
+    </body>
+</html>

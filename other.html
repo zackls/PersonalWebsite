@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link type="text/CSS" rel="stylesheet" href="stylesheet.css" />
+        <script type="text/javascript" src="script.js"></script>
+        <link rel="icon" type="image/png" href="smiley.ico">
+        <title>Zack Littke-Smith</title>
+    </head>
+    <body id="body">
+        <div id="top">
+            <h1>PROJECTS</h1>
+        </div>
+        <div id="nav">
+            <table align="center">
+                <tr>
+                    <td class="rtd" style="width:5px">
+                        <h3>|</h3>
+                    </td>
+                    <td class="rtd">
+                        <h3><a href="index.html">Home</a></h3>
+                    </td>
+                    <td class="rtd" style="width:5px">
+                        <h3>|</h3>
+                    </td>
+                    <td class="rtd" onmouseenter="altNav()" onmouseleave="regNav()">
+                        <h3><span id="disappear">Projects</span></h3>
+                    </td>
+                    <td class="rtd" style="width:5px">
+                        <h3>|</h3>
+                    </td>
+                    <td class="rtd">
+                        <h3><a href="resume.html">Resume</a></h3>
+                    </td>
+                    <td class="rtd" style="width:5px">
+                        <h3>|</h3>
+                    </td>
+                    <td class="rtd">
+                        <h3><a onclick="changeColor()">Change Theme</a></h3>
+                    </td>
+                    <td class="rtd" style="width:5px">
+                        <h3>|</h3>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="pic">
+            <div id="crop">
+                <img id="image" src="blueMain.png" width="100%" height="899px">
+            </div>
+        </div>
+        <div id="main" style="background:#FFFFFF">
+            <h1>Other Projects</h1>
+            <div class="post">
+                <img src="artExample40.png" id="cycle4" onclick="cycleImages(4, 5)" align="left" width="500px" height="617px" style="padding-right:10px">
+                <span class="leftAlign">
+                    <h2>NON-FUNCTION GRAPHER</h2>
+                    <p>This program takes in two expressions involving X and Y and outputs all the points on a graph where they are equal. The original Flash version of this program can be found <a href="https://github.com/zdizzler/Non-Function-Grapher">HERE</a>, and the Java version can be found <a href="https://github.com/zdizzler/Non-Function-Grapher-Java-">HERE</a>.</p>
+                    <p>A regular graphing calculator graphs functions by plugging in increasing X values to the expression you provide it and finding their corresponding Y values, then connecting the lines between that (X, Y) value and the previous one. My program works by literally plugging in EVERY point on the graph and seeing if the two expressions of X and Y provided by the user are within a tolerance of each other (not strictly equal), and if they are, it graphs a black pixel. I haven't adapted the function to take in user input yet (the way you change the expressions being evaluated is by literally going into the code and changing them, which is more efficient anyways) but it still works perfectly fine, and it makes some awesome pictures. Some of my favorites are shown to the right, click on the picture if you'd like to cycle through them. Some differences between the Flash and Java programs are evident, including some artifacts which appear differently on each program's output as well as the generic background color of the image produced. The practical applications of this program are really minimal, it's pretty much just a cool picture machine. The axes of the graph aren't shown because I figured it somewhat ruined the raw picture.</p>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </span>
+            </div>
+            <div class="post">
+                <img src="sitePic.png" align="right" width="500px" height="400px" style="padding-left:10px">
+                <span class="rightAlign">
+                    <h2>THIS WEBSITE</h2>
+                    <p>I'm currently writing this website (and no it's not a project for school. Actually, not a single one of these projects were made for school; I made them all on my own) to both put myself out there and organize the things I've done over the years. It's nice to have only one reference instead of several, and since my folders and projects get pretty messy sometimes, it's nice to have everything in once place. Of course, this site doesn't contain EVERYTHING I've done, things I've lost or given up on before they took shape, but it does contain the majority of my mostly-finished work. Like many of my other projects, you may view the hopefully updated code for this site <a href="https://github.com/zdizzler/Non-Function-Grapher">HERE</a>. Anyways, although this section doesn't exactly constitute the 'end' of my website, I'll take this opportunity anyways to thank you for visiting my website, and to have a wonderful day :)</p>
+                </span>
+            </div>
+        </div>
+    </body>
+</html>
