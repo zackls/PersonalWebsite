@@ -3,7 +3,7 @@ var altNav = function() {
 }
 
 var regNav = function() {
-    document.getElementById("disappear").innerHTML = "Projects";
+    document.getElementById("disappear").innerHTML = "<a href=projects.html>Projects</a>";
 }
 
 window.onscroll = scroll;
@@ -33,7 +33,7 @@ var changeColor = function() {
     document.getElementById("top").style.backgroundColor = bgTopColors[i];
     document.getElementById("image").src = "";
     document.getElementById("crop").style.marginTop = offsets[i];
-    document.getElementById("image").src = imgSrcs[i];
+    document.getElementById("image").src = "images/" + imgSrcs[i];
     document.getElementById("body").style.backgroundColor = bgColors[i];
 }
 
@@ -41,14 +41,35 @@ var j = 0;
 var cycleImages = function(num, amt) {
     j++;
     j %= amt;
-    var image = "artExample" + num + "" + j + ".png";
+    var image = "images/art/artExample" + num + "" + j + ".png";
     document.getElementById("cycle" + num).src = image;
 }
 
+var fileNames = ["Intelligence Should Always Be Capitalized",
+                 "Nighttime Walk",
+                 "Sonnet About a Lamp",
+                 "Like a Sidewalk",
+                 "J",
+                 "Altering Natural Selection",
+                 "Green",
+                 "The Things I Carry",
+                 "A Bit of Counterfactual Thinking",
+                 "Death Anxiety",
+                 "Molecules",
+                 "Sunshine",
+                 "Five Minutes"];
 var k = 0;
-var cyclePoetry = function(num, amt) {
+var cyclePoetry = function() {
     k++;
-    k %= amt;
-    var image = "poetryExample" + num + "" + k + ".pdf";
-    document.getElementById("cycle" + num).data = image;
+    //k %= fileNames.length;
+    var poem = "poetry/" + fileNames[k] + ".pdf";
+    document.getElementById("poemTag").data = poem;
 }
+
+// var k = 0;
+// var cyclePoetry = function(num, amt) {
+//     k++;
+//     k %= amt;
+//     var image = "poetryExample" + num + "" + k + ".pdf";
+//     document.getElementById("cycle" + num).data = image;
+// }
