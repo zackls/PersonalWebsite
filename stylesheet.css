@@ -33,6 +33,7 @@ body {
 .post {
     margin: 30px 30px 30px 30px;
     width: 100% - 70px;
+    display: inline-block;
 }
 
 .rightAlign {

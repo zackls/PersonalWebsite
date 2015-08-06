@@ -1,3 +1,37 @@
+var insertNavBar = function() {
+    document.getElementById("nav").innerHTML = "<table align=\"center\">"
+                                               +   "<tr>"
+                                               +       "<td class=\"rtd\" style=\"width:5px\">"
+                                               +           "<h3>|</h3>"
+                                               +       "</td>"
+                                               +       "<td class=\"rtd\">"
+                                               +           "<h3><a href=\"index.html\">Home</a></h3>"
+                                               +       "</td>"
+                                               +       "<td class=\"rtd\" style=\"width:5px\">"
+                                               +           "<h3>|</h3>"
+                                               +       "</td>"
+                                               +       "<td class=\"rtd\" onmouseenter=\"altNav()\" onclick=\"altNav()\" onmouseleave=\"regNav()\">"
+                                               +           "<h3><span id=\"disappear\">Projects</span></h3>"
+                                               +       "</td>"
+                                               +       "<td class=\"rtd\" style=\"width:5px\">"
+                                               +           "<h3>|</h3>"
+                                               +       "</td>"
+                                               +       "<td class=\"rtd\">"
+                                               +           "<h3><a href=\"resume.html\">Resume</a></h3>"
+                                               +       "</td>"
+                                               +       "<td class=\"rtd\" style=\"width:5px\">"
+                                               +           "<h3>|</h3>"
+                                               +       "</td>"
+                                               +       "<td class=\"rtd\">"
+                                               +           "<h3><a onclick=\"changeColor()\">Change Theme</a></h3>"
+                                               +       "</td>"
+                                               +       "<td class=\"rtd\" style=\"width:5px\">"
+                                               +           "<h3>|</h3>"
+                                               +       "</td>"
+                                               +   "</tr>"
+                                               +"</table>";
+}
+
 var altNav = function() {
     document.getElementById("disappear").innerHTML = "<a href=games.html>Games</a> | <a href=art.html>Art</a> | <a href=poetry.html>Poetry</a> | <a href=other.html>Other</a>";
 }
@@ -26,22 +60,22 @@ var bgTopColors = ["#CCCCFF","#CCFFCC","#FFCCCC","#FFFFCC"];
 var imgSrcs = ["blueMain.png","greenMain.png","redMain.png","yellowMain.png"];
 var offsets = ["-200px","-100px","-350px","0px"];
 var bgColors =["#888899","#889988","#998888","#999988"];
-var i = 0;
+var curBG = 0;
 var changeColor = function() {
-    i++;
-    i %= 4;
-    document.getElementById("top").style.backgroundColor = bgTopColors[i];
+    curBG++;
+    curBG %= bgTopColors.length;
+    document.getElementById("top").style.backgroundColor = bgTopColors[curBG];
     document.getElementById("image").src = "";
-    document.getElementById("crop").style.marginTop = offsets[i];
-    document.getElementById("image").src = "images/" + imgSrcs[i];
-    document.getElementById("body").style.backgroundColor = bgColors[i];
+    document.getElementById("crop").style.marginTop = offsets[curBG];
+    document.getElementById("image").src = "images/" + imgSrcs[curBG];
+    document.getElementById("body").style.backgroundColor = bgColors[curBG];
 }
 
-var j = 0;
+curIMG = 0;
 var cycleImages = function(num, amt) {
-    j++;
-    j %= amt;
-    var image = "images/art/artExample" + num + "" + j + ".png";
+    curIMG++;
+    curIMG %= amt;
+    var image = "images/art/artExample" + num + "" + curIMG + ".png";
     document.getElementById("cycle" + num).src = image;
 }
 
@@ -58,18 +92,9 @@ var fileNames = ["Intelligence Should Always Be Capitalized",
                  "Molecules",
                  "Sunshine",
                  "Five Minutes"];
-var k = 0;
+var curPoem = 0;
 var cyclePoetry = function() {
-    k++;
-    //k %= fileNames.length;
-    var poem = "poetry/" + fileNames[k] + ".pdf";
-    document.getElementById("poemTag").data = poem;
+    curPoem++;
+    curPoem %= fileNames.length;
+    document.getElementById("poemTag").innerHTML = "<object data=\"poetry/" + fileNames[curPoem] + ".pdf\" type=\"application/pdf\" width=\"100%\" height=\"1075px\"></object>";
 }
-
-// var k = 0;
-// var cyclePoetry = function(num, amt) {
-//     k++;
-//     k %= amt;
-//     var image = "poetryExample" + num + "" + k + ".pdf";
-//     document.getElementById("cycle" + num).data = image;
-// }

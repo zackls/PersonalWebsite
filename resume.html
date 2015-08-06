@@ -6,42 +6,11 @@
         <link rel="icon" type="image/png" href="smiley.ico">
         <title>Zack Littke-Smith</title>
     </head>
-    <body id="body">
+    <body id="body" onload="insertNavBar()">
         <div id="top">
             <h1>RESUME</h1>
         </div>
         <div id="nav">
-            <table align="center">
-                <tr>
-                    <td class="rtd" style="width:5px">
-                        <h3>|</h3>
-                    </td>
-                    <td class="rtd">
-                        <h3><a href="index.html">Home</a></h3>
-                    </td>
-                    <td class="rtd" style="width:5px">
-                        <h3>|</h3>
-                    </td>
-                    <td class="rtd" onmouseenter="altNav()" onmouseleave="regNav()">
-                        <h3><span id="disappear">Projects</span></h3>
-                    </td>
-                    <td class="rtd" style="width:5px">
-                        <h3>|</h3>
-                    </td>
-                    <td class="rtd">
-                        <h3><a href="resume.html">Resume</a></h3>
-                    </td>
-                    <td class="rtd" style="width:5px">
-                        <h3>|</h3>
-                    </td>
-                    <td class="rtd">
-                        <h3><a onclick="changeColor()">Change Theme</a></h3>
-                    </td>
-                    <td class="rtd" style="width:5px">
-                        <h3>|</h3>
-                    </td>
-                </tr>
-            </table>
         </div>
         <div id="pic">
             <div id="crop">
@@ -49,9 +18,8 @@
             </div>
         </div>
         <div id="main" style="background:#CCCCCC">
-            <br>
-            <object data="currentResume.pdf" type="application/pdf" width="100%" height="1075px"></object>
             <p><center>Last updated on 10/15/2014</center></p>
+            <object data="currentResume.pdf" type="application/pdf" width="100%" height="1075px"></object>
         </div>
     </body>
 </html>
