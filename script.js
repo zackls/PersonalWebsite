@@ -1,5 +1,5 @@
 var insertNavBar = function() {
-    document.getElementById("nav").innerHTML = "<table align=\"center\">"
+    document.getElementById("nav").innerHTML =  "<table align=\"center\">"
                                                +   "<tr>"
                                                +       "<td class=\"rtd\" style=\"width:5px\">"
                                                +           "<h3>|</h3>"
