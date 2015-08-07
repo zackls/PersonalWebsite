@@ -1,39 +1,6 @@
-var insertNavBar = function() {
-    document.getElementById("nav").innerHTML =  "<table align=\"center\">"
-                                               +   "<tr>"
-                                               +       "<td class=\"rtd\" style=\"width:5px\">"
-                                               +           "<h3>|</h3>"
-                                               +       "</td>"
-                                               +       "<td class=\"rtd\">"
-                                               +           "<h3><a href=\"index.html\">Home</a></h3>"
-                                               +       "</td>"
-                                               +       "<td class=\"rtd\" style=\"width:5px\">"
-                                               +           "<h3>|</h3>"
-                                               +       "</td>"
-                                               +       "<td class=\"rtd\" onmouseenter=\"altNav()\" onclick=\"altNav()\" onmouseleave=\"regNav()\">"
-                                               +           "<h3><span id=\"disappear\">Projects</span></h3>"
-                                               +       "</td>"
-                                               +       "<td class=\"rtd\" style=\"width:5px\">"
-                                               +           "<h3>|</h3>"
-                                               +       "</td>"
-                                               +       "<td class=\"rtd\">"
-                                               +           "<h3><a href=\"resume.html\">Resume</a></h3>"
-                                               +       "</td>"
-                                               +       "<td class=\"rtd\" style=\"width:5px\">"
-                                               +           "<h3>|</h3>"
-                                               +       "</td>"
-                                               +       "<td class=\"rtd\">"
-                                               +           "<h3><a onclick=\"changeColor()\">Change Theme</a></h3>"
-                                               +       "</td>"
-                                               +       "<td class=\"rtd\" style=\"width:5px\">"
-                                               +           "<h3>|</h3>"
-                                               +       "</td>"
-                                               +   "</tr>"
-                                               +"</table>";
-}
 
 var altNav = function() {
-    document.getElementById("disappear").innerHTML = "<a href=games.html>Games</a> | <a href=art.html>Art</a> | <a href=poetry.html>Poetry</a> | <a href=other.html>Other</a>";
+    document.getElementById("disappear").innerHTML = "<a href=games.html>Games</a>  |  <a href=art.html>Art</a>  |  <a href=poetry.html>Poetry</a>  |  <a href=other.html>Other</a>";
 }
 
 var regNav = function() {
@@ -56,22 +23,79 @@ function scroll(ev) {
     }
 }
 
-var bgTopColors = ["#CCCCFF","#CCFFCC","#FFCCCC","#FFFFCC"];
-var imgSrcs = ["blueMain.png","greenMain.png","redMain.png","yellowMain.png"];
-var offsets = ["-200px","-100px","-350px","0px"];
-var bgColors =["#888899","#889988","#998888","#999988"];
+var bgTopColors = ["#CCCCFF", "#CCFFCC", "#FFCCCC", "#FFFFCC"];
+var imgSrcs = ["images/blueMain.png", "images/greenMain.png", "images/redMain.png", "images/yellowMain.png"];
+var offsets = ["-200px", "-100px", "-350px", "0px"];
+var bgColors =["#888899", "#889988", "#998888", "#999988"];
 var curBG = 0;
 var changeColor = function() {
     curBG++;
     curBG %= bgTopColors.length;
+    setColorFields();
+    saveCookie();
+}
+var setColorFields = function() {
     document.getElementById("top").style.backgroundColor = bgTopColors[curBG];
     document.getElementById("image").src = "";
     document.getElementById("crop").style.marginTop = offsets[curBG];
-    document.getElementById("image").src = "images/" + imgSrcs[curBG];
+    document.getElementById("image").src = imgSrcs[curBG];
     document.getElementById("body").style.backgroundColor = bgColors[curBG];
 }
+var saveCookie = function() {
+    document.cookie = "savedBG=" + curBG;
+}
 
-curIMG = 0;
+var insertHUD = function(title) {
+    if (document.cookie === "") {
+        saveCookie();
+    }
+    curBG = document.cookie.substring(8, 9);
+    document.getElementById("hud").innerHTML =
+        "<div id=\"top\">"+
+            "<h1>" + title + "</h1>"+
+        "</div>"+
+        "<div id=\"nav\">"+
+            "<table align=\"center\">"+
+                "<tr>"+
+                    "<td class=\"rtd\" style=\"width:5px\">"+
+                        "<h3>|</h3>"+
+                    "</td>"+
+                    "<td class=\"rtd\">"+
+                        "<h3><a href=\"index.html\">Home</a></h3>"+
+                    "</td>"+
+                    "<td class=\"rtd\" style=\"width:5px\">"+
+                        "<h3>|</h3>"+
+                    "</td>"+
+                    "<td class=\"rtd\" onmouseenter=\"altNav()\" onclick=\"altNav()\" onmouseleave=\"regNav()\">"+
+                        "<h3><span id=\"disappear\">Projects</span></h3>"+
+                    "</td>"+
+                    "<td class=\"rtd\" style=\"width:5px\">"+
+                        "<h3>|</h3>"+
+                    "</td>"+
+                    "<td class=\"rtd\">"+
+                        "<h3><a href=\"resume.html\">Resume</a></h3>"+
+                    "</td>"+
+                    "<td class=\"rtd\" style=\"width:5px\">"+
+                        "<h3>|</h3>"+
+                    "</td>"+
+                    "<td class=\"rtd\">"+
+                        "<h3><a onclick=\"changeColor()\">Change Theme</a></h3>"+
+                    "</td>"+
+                    "<td class=\"rtd\" style=\"width:5px\">"+
+                        "<h3>|</h3>"+
+                    "</td>"+
+                "</tr>"+
+            "</table>"+
+        "</div>"+
+        "<div id=\"pic\">"+
+            "<div id=\"crop\">"+
+                "<img id=\"image\" src=\"" + imgSrcs[curBG] + "\" width=\"100%\" height=\"899px\">"+
+            "</div>"+
+        "</div>";
+    setColorFields();
+}
+
+var curIMG = 0;
 var cycleImages = function(num, amt) {
     curIMG++;
     curIMG %= amt;
