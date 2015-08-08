@@ -1,6 +1,29 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!--<object name="grapher" width="1" height="1">
+            <param name="name" value="grapher">
+            <param name="code" value="com.example.MyApplet">
+            <param name="archive" value="Grapher.jar">
+            <param name="scriptable" value="true">
+            <param name="mayscript" value="true">
+            <comment>
+                <embed
+                    type="application/x-java-applet;version=1.5"
+                    code="Grapher"
+                    archive="Grapher.jar"
+                    name="grapher"
+                    width="1"
+                    height="1"
+                    mayscript="true"
+                    scriptable="false"
+                    pluginspage="http://java.sun.com/products/plugin/index.html#download">
+                    <noembed>
+                            Java not supported.
+                    </noembed>
+                </embed>
+            </comment>
+        </object>-->
         <link type="text/CSS" rel="stylesheet" href="stylesheet.css" />
         <script type="text/javascript" src="script.js"></script>
         <link rel="shortcut icon" href="images/smiley.ico" />
@@ -17,6 +40,8 @@
                     <p>This program takes in two expressions involving X and Y and outputs all the points on a graph where they are equal. The original Flash version of this program can be found <a href="https://github.com/zdizzler/Non-Function-Grapher">HERE</a>, and the Java version can be found <a href="https://github.com/zdizzler/Non-Function-Grapher-Java-">HERE</a>.</p>
                     <p>A regular graphing calculator graphs functions by plugging in increasing X values to the expression you provide it and finding their corresponding Y values, then connecting the lines between that (X, Y) value and the previous one. My program works by literally plugging in EVERY point on the graph and seeing if the two expressions of X and Y provided by the user are within a tolerance of each other (not strictly equal), and if they are, it graphs a black pixel. I've been recently trying to let the user input their own functions from the command line, not edit the inside of the program directly, but parsing input takes a very long time, and I've been trying to optimize it. Some of my favorites are shown to the left, click on the picture if you'd like to cycle through them. Some differences between the Flash and Java programs are evident, including some artifacts which appear differently on each program's output as well as the generic background color of the image produced. The practical applications of this program are really minimal, it's pretty much just a cool picture machine. The axes of the graph aren't shown because I figured it somewhat ruined the raw picture.</p>
                 </div>
+            </div>
+            <div class="post">
             </div>
             <div class="post">
                 <img src="images/sitePic.png" align="right" width="500px" height="400px" style="padding-left:10px">
