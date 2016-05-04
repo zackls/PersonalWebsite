@@ -1,5 +1,5 @@
-h1, h2, h3, p {
-    font-family: "Open Sans";
+h1, h2, h3 {
+    font-family: "Vollkorn";
     font-weight: normal;
     color: #444444;
 }
@@ -13,16 +13,16 @@ h3 {
 }
 
 p {
+    font-family: "Lato";
     text-align: justify;
+    overflow: hidden;
+    font-weight: normal;
+    color: #444444;
 }
 
 a {
     text-decoration: none;
     color: inherit;
-}
-
-body {
-    background-color: #888899;
 }
 
 .rtd {

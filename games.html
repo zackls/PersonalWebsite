@@ -1,12 +1,112 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Vollkorn">
         <link type="text/CSS" rel="stylesheet" href="stylesheet.css" />
         <script type="text/javascript" src="script.js"></script>
+
+        <script src="emulator/js/util.js"></script>
+        <script src="emulator/js/core.js"></script>
+        <script src="emulator/js/arm.js"></script>
+        <script src="emulator/js/thumb.js"></script>
+        <script src="emulator/js/mmu.js"></script>
+        <script src="emulator/js/io.js"></script>
+        <script src="emulator/js/audio.js"></script>
+        <script src="emulator/js/video.js"></script>
+        <script src="emulator/js/video/proxy.js"></script>
+        <script src="emulator/js/video/software.js"></script>
+        <script src="emulator/js/irq.js"></script>
+        <script src="emulator/js/keypad.js"></script>
+        <script src="emulator/js/sio.js"></script>
+        <script src="emulator/js/savedata.js"></script>
+        <script src="emulator/js/gpio.js"></script>
+        <script src="emulator/js/gba.js"></script>
+        <script src="emulator/resources/xhr.js"></script>
+        <script>
+            var gba;
+            var runCommands = [];
+
+            try {
+                gba = new GameBoyAdvance();
+                gba.keypad.eatInput = true;
+                gba.setLogger(function(level, error) {
+                    console.log(error);
+                    gba.pause();
+                    var screen = document.getElementById('screen');
+                    if (screen.getAttribute('class') == 'dead') {
+                        console.log('We appear to have crashed multiple times without reseting.');
+                        return;
+                    }
+                    var crash = document.createElement('img');
+                    crash.setAttribute('id', 'crash');
+                    crash.setAttribute('src', 'emulator/resources/crash.png');
+                    screen.parentElement.insertBefore(crash, screen);
+                    screen.setAttribute('class', 'dead');
+                });
+            } catch (exception) {
+                gba = null;
+                //gba load probably failed?
+            }
+
+            window.onload = function() {
+                onWindowLoad('PROJECTS');
+
+                var canvas = document.getElementById('screen');
+                gba.setCanvas(canvas);
+
+                gba.logLevel = gba.LOG_ERROR;
+
+                loadRom('emulator/resources/bios.bin', function(bios) {
+                    gba.setBios(bios);
+                });
+
+                run();
+            }
+
+            var getFileBlob = function (url, cb) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", url);
+                xhr.responseType = "blob";
+                xhr.addEventListener('load', function() {
+                    cb(xhr.response);
+                });
+                xhr.send();
+            };
+
+            var blobToFile = function (blob, name) {
+                blob.lastModifiedDate = new Date();
+                blob.name = name;
+                return blob;
+            };
+
+            var getFileObject = function(filePathOrUrl, cb) {
+                getFileBlob(filePathOrUrl, function (blob) {
+                    cb(blobToFile(blob, "TheCave.gba"));
+                });
+            };
+
+            function run() {
+                getFileObject("TheCave.gba", function (fileObject) {
+                    gba.loadRomFromFile(fileObject, function(result) {
+                        if (result) {
+                            for (var i = 0; i < runCommands.length; ++i) {
+                                runCommands[i]();
+                            }
+                            runCommands = [];
+                            gba.runStable();
+                        } else {
+                            //gba load failed
+                        }
+                    });
+                })
+                
+            }
+        </script>
         <link rel="shortcut icon" href="images/smiley.ico" />
         <title>Zack Littke-Smith</title>
     </head>
-    <body id="body" onload="insertHUD('PROJECTS')">
+    <body id="body">
         <div id="hud"></div>
         <div id="main" style="background:#FFFFFF">
             <h1>Games</h1>
@@ -35,20 +135,18 @@
                 </div>
             </div>
             <div class="post">
-                <!-- <object width="600" height="400" align="right" style="padding-left:10px">
-                    <param name="Focus1" value="focus.swf">
-                    <embed src="games/focus.swf" width="600" height="400">
-                    </embed>
-                </object> -->
+                <object align="right" style="padding-left:10px">
+                    <canvas id="screen" width="480" height="320"></canvas>
+                </object>
                 <div class="rightAlign">
                     <h2>THE CAVE</h2>
-                    <p>You've stumbled upon your wildest fantasy! A buried treasure in the deepest depths of a cave. But right as you begin to process what has happened, you hear shuffles coming from the darkness. You must protect your new discovery at all costs. Use the arrow keys and the Z button to choose and select start menu items. While in game, use the arrow keys to move your character, the A and S keys to rotate your character, and the Z button to shoot. Don't let anything touch you or your treasure or it's game over!</p>
-                    <p>This project was actually done as homework for a class I took at Georgia Tech, but I went way beyond the requirements because it was right up my alley (it's actually the only thing on this site which was done for homework). This game was actually programmed for the Gameboy Advance and must be played with an emulator. It's also written in C, which was a bit of a change for me as I usually write in object-oriented languages. It has a very similar feel to an arcade game, and this is on purpose; arcade games are simple but very fun, and I wanted to put out my own take on an arcade game. I really, really liked coding this in C, I think it's a very interesting language, and I hope to make more projects in it. The source code can be found <a href="https://github.com/zdizzler/TheCave">HERE</a>.</p>
+                    <p>You've stumbled upon your wildest fantasy! A buried treasure in the deepest depths of a cave. But right as you begin to process what has happened, you hear shuffles coming from the darkness. Use the arrow keys and the Z button to choose and select start menu items. While in game, use the arrow keys to move your character, the A and S keys to rotate your character, and the Z button to shoot. Don't let anything get you or your treasure</p>
+                    <p>This project was actually done as homework for a class I took at Georgia Tech, but I went way beyond the requirements because it was right up my alley (it's actually the only thing on this site which was done for homework). This game was programmed for the Gameboy Advance and must be played with an emulator. It's written in C, which was a bit of a change for me as I usually write in object-oriented languages. It has a very similar feel to an arcade game, since arcade games are simple but very fun, and I wanted to put out my own take on an arcade game. I really, really liked coding this in C, I think it's a very interesting language, and I hope to make more projects in it. The source code can be found <a href="https://github.com/zdizzler/TheCave">HERE</a>.</p>
                 </div>
             </div>
             <div class="post">
                 <object width="600" height="400" align="left" style="padding-right:10px">
-                    <param name="Focus2" value="focus.swf">
+                    <param name="Focus" value="focus.swf">
                     <embed src="games/focus.swf" width="600" height="400">
                     </embed>
                 </object>

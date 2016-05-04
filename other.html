@@ -1,35 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!--<object name="grapher" width="1" height="1">
-            <param name="name" value="grapher">
-            <param name="code" value="com.example.MyApplet">
-            <param name="archive" value="Grapher.jar">
-            <param name="scriptable" value="true">
-            <param name="mayscript" value="true">
-            <comment>
-                <embed
-                    type="application/x-java-applet;version=1.5"
-                    code="Grapher"
-                    archive="Grapher.jar"
-                    name="grapher"
-                    width="1"
-                    height="1"
-                    mayscript="true"
-                    scriptable="false"
-                    pluginspage="http://java.sun.com/products/plugin/index.html#download">
-                    <noembed>
-                            Java not supported.
-                    </noembed>
-                </embed>
-            </comment>
-        </object>-->
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Vollkorn">
         <link type="text/CSS" rel="stylesheet" href="stylesheet.css" />
         <script type="text/javascript" src="script.js"></script>
         <link rel="shortcut icon" href="images/smiley.ico" />
         <title>Zack Littke-Smith</title>
     </head>
-    <body id="body" onload="insertHUD('PROJECTS')">
+    <body id="body" onload="onWindowLoad('PROJECTS')">
         <div id="hud"></div>
         <div id="main" style="background:#FFFFFF">
             <h1>Other Projects</h1>
@@ -42,6 +21,30 @@
                 </div>
             </div>
             <div class="post">
+                <object name="grapher" classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93" width="500" height="500">
+                    <param name="name" value="grapher">
+                    <param name="code" value="Grapher.class">
+                    <param name="archive" value="Grapher.class">
+                    <param name="type" value="application/x-java-applet;version=1.5.0">
+                    <param name="scriptable" value="true">
+                    <param name="mayscript" value="true">
+                    <comment>
+                        <embed
+                            code="Grapher.class"
+                            archive="Grapher.class"
+                            name="grapher"
+                            width="500"
+                            height="500"
+                            mayscript="true"
+                            scriptable="true"
+                            type="application/x-java-applet;version=1.5.0"
+                            pluginspage="http://java.sun.com/products/plugin/index.html#download">
+                            <noembed>
+                                    Java not supported.
+                            </noembed>
+                        </embed>
+                    </comment>
+                </object>
             </div>
             <div class="post">
                 <img src="images/sitePic.png" align="right" width="500px" height="400px" style="padding-left:10px">
